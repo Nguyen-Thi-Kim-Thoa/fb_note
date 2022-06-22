@@ -1,0 +1,61 @@
+Type = 01
+#Kiểm tra bond đó đã lên đúng chưa
+select sum(ate.quantity)
+from account.transfer_event ate, account.account acc_from, account.account acc_to
+where 
+ate.asset_info_id = :'asset_info_id' 
+and ate.status = 1 and acc_from.type in (0) 
+and acc_to.type in (2, 7) 
+and acc_from.asset_type = 0 
+and acc_to.asset_type = 0 
+and ate.from_account_id = acc_from.id 
+and ate.to_account_id = acc_to.id
+
+#Kiểm tra kho và số lượng
+select ib.issued_date, sum(ii.quantity)
+from account.account_item as ai
+left join account.account as ac on ai.account_id = ac.id
+left join account.issue_info ii on ii.account_item_id = ai.id
+left join account.issue_batch ib on ib.id = ii.issue_batch_id
+where ai.asset_info_id = (select id from bond.bond_original_info where code = :'bond_code')
+and ac.type in (2) and ai.quantity > 0
+and ai.account_item_status not in (7, 8)
+group by ib.issued_date;
+
+
+#Kiểm tra nhập kho (thời gian,....)
+select b.created_time , c.created_time ,b.account_item_status , b.order_id,b.id, a.name, a.type, b.quantity
+
+as quantity_account_item, c.quantity as quantity_issue_info, d.issued_date
+
+    from account.account a
+
+            left join account.account_item b on a.id = b.account_id
+
+            left join account.issue_info c on c.account_item_id = b.id
+
+            left join account.issue_batch d on c.issue_batch_id = d.id
+
+    where b.asset_info_id = (select id from bond.bond_original_info where code ='THOA.20220421.101937')
+
+    and a.type in (2,3)
+
+   order  by b.id asc, d.issued_date asc ;
+
+
+a.type
+
+   enum AccountType {
+  ISSUER = 0;
+  X_ISSUER = 1;
+  DISTRIBUTION = 2;
+  BOOKING = 3;
+  MATCHING = 4;
+  WAIT_TRANSFER = 5;    
+  X_TRADING = 6;
+  ASSET = 7;
+  TEMPORARY = 8;
+  X_DISTRIBUTION = 9;
+  HOLDING = 10;
+  X_HOLDING = 11;
+}

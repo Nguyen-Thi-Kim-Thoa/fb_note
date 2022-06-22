@@ -1,0 +1,100 @@
+##Automation
+
+* Tạo sample Maven project - Hiểu sơ về structure Maven project
+* Adding dependencies/libs
+* Tạo/run test case cơ bản cho web với Selenium
+
+
+Sharing: Scope testing
+Tìm hiểu nhiệm vụ các team, qua API,
+TestAPI: postman.
+Asgard: Bond: lô, thông tin, đáo hạn, lãi suất, coupon.
+Venus: chính chỉ nợ, đáo hạn, bán tài sản.
+Thanos: Market, Care.
+
+#Needs:
+Automation test cho web của prj
+
+Cấu trúc project:
+
+	folder: Test: java unit/ testNG- test lib/test tool
+
+#Nhu cầu: 
+	Tạo project maven , add dependency để truy cập vào đc finbase
+		Pom là gì 
+			-> dependency:
+    ???Làm sao biết có dependency nào cần thiết
+	    lib for web automation -> selenium -> selenium maven dependency
+	    test lib > JUnit, TestNG, -> TestNG maven dependency 
+    ???Làm sao mở được cái web
+	    lib selenium _ testNG [libname] example (basic level)|dpcs java|
+		    ex: selenium example java, selenium classes java
+
+
+
+Github anh Quí: quipham
+
+
+
+
+Buổi 2:
+Tạo package không cần import
+Cấu trúc maven để dùng chung
+
+
+Advance
+Throws
+Exception
+
+
+Viết các testcase cho login
+
+
+Chờ để thực hiện trên màn hình:
+Implicit Wait : Set cứng thời gian( nên áp dụng khi load trang )
+Explicit Wait : 
+	ex: Trong 60s thì mỗi 5 giây sẽ tìm element 1 lần 
+Fluent Wait: ???
+
+
+
+Headless: Ẩn trình duyệt khi chạy testcase
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	

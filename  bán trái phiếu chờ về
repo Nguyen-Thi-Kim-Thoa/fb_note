@@ -1,0 +1,27 @@
+#Mua/ bán trái phiếu chờ về
+#Mua/ bán trái phiếu chờ về
+9/5: Chỉ được chọn mua 1 lô: vì mỗi lô sẽ tính lãi và giá khác nhau
+nên khi chọn mix lô sẽ chưa thể tính được các tính tổng coupon => lãi phụ trội => đơn giá, số lượng trái phiếu
+Sl chờ về: kh bán nhưng chưa được chuyển nhượng (chờ chuyển nhượng)
+
+#Chuẩn bị data: 
+- [ ] Bond đang phát hành trong kỳ coupon đầu tiên
+- [ ] Bond đang phát hành ngoài kỳ coupon đầu tiên
+- [ ] Trái phiếu chờ về: đang chờ về, đã về (đúng lô chưa)
+
+
+
+?? Chờ về thì cộng vô nắm giữ của kho: => mó sẽ chia ra bảng hàng tồn tại ngày đó từng lô, và ngày hàng về từng lô
+
+Khi kh bán về kho đã được chuyển nhượng vào kho => lúc đó mới được chuyển nhượng chi khách mua.
+Ngày chuyển nhượng ( có điều kiện gì không, hiển thị như thế nào????)
+Nếu kh chọn sl trái phiếu nhiều hơn tất cả các lô => hiênj thông báo không đủ trái phiếu
+
+Link: https://finbasevn.atlassian.net/wiki/spaces/FB/pages/178914062/Ph+n+b+TP+t+ng+th+c+ng
+
+
+#Sau ngày chốt ds trái chủ:
+Sau khi chuyển nhượng > trừ số lượng khả dụng.
+
+#Đặt lệnh khi có lô chờ về hoặc bán về
+Ưu tiên hiển thị lô đã 

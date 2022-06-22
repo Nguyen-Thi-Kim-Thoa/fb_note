@@ -1,0 +1,52 @@
+#trường hợp sẽ thay đổi AFS
+Sau khi đặt lệnh Mua : Trạng thái Nháp > Giảm AFS
+Sau khi đặt lệnh Bán : Trạng thái Chờ chuyển nhượng > Tăng AFS
+Huỷ lệnh Mua : Đã duyệt > Tăng AFS     
+Huỷ lệnh Bán : Đã duyêt > Giảm AFS
+ >>>>> Check tất cả ngày 
+
+
+# Trong đặt lệnh Mua liên quan đến chờ về > thêm case chọn lô thủ công > AFS.
+
+
+# Bond chưa nhập kho:
+    Sau khi đặt lệnh Mua : 
+        Trạng thái Nháp  > Giảm AFS
+        Huỷ: Tăng AFS
+    Sau khi đặt lệnh Bán : Trạng thái Chờ chuyển nhượng > Tăng AFS
+    Huỷ lệnh Mua : Đã duyệt > Tăng AFS
+    Huỷ lệnh Bán : Đã duyêt > Giảm AFS
+
+# Bond sơ cấp:
+ [Quá khứ] 
+    Tại ngày PH:
+    Sau khi đặt lệnh Mua : Trạng thái Nháp > Giảm AFS  
+    Sau khi đặt lệnh Bán : Trạng thái Chờ chuyển nhượng > Tăng AFS
+    Huỷ lệnh Mua : Đã duyệt > Tăng AFS
+    Huỷ lệnh Bán : Đã duyêt > Giảm AFS
+ [Hiện tại]  
+    Sau khi đặt lệnh Mua : Trạng thái Nháp > Giảm AFS
+        FIFO: 
+        Chọn lô
+    Sau khi đặt lệnh Bán : Trạng thái Chờ chuyển nhượng > Tăng AFS
+    Huỷ lệnh Mua : Đã duyệt > Tăng AFS
+    Huỷ lệnh Bán : Đã duyêt > Giảm AFS
+ [Tương lai] 
+    Sau chốt dstc:
+        Sau khi đặt lệnh Mua : Trạng thái Nháp > Giảm AFS
+        Sau khi đặt lệnh Bán : Trạng thái Chờ chuyển nhượng > Tăng AFS
+        Huỷ lệnh Mua : Đã duyệt > Tăng AFS
+        Huỷ lệnh Bán : Đã duyêt > Giảm AFS
+    Tại chốt dstc:
+        Sau khi đặt lệnh Mua : Trạng thái Nháp > Giảm AFS
+        Sau khi đặt lệnh Bán : Trạng thái Chờ chuyển nhượng > Tăng AFS
+        Huỷ lệnh Mua : Đã duyệt > Tăng AFS
+        Huỷ lệnh Bán : Đã duyệt > Giảm AFS
+
+# Bond thứ cấp:
+    Sau khi đặt lệnh Mua : Trạng thái Nháp > Giảm AFS
+    Sau khi đặt lệnh Bán : Trạng thái Chờ chuyển nhượng > Tăng AFS
+    Huỷ lệnh Mua : Đã duyệt > Tăng AFS
+    Huỷ lệnh Bán : Đã duyêt > Giảm AFS
+
+

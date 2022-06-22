@@ -1,0 +1,5 @@
+#Công thức tính lãi suất trung bình
+    ([ls hỗ trợ * (transferDate - paymentDate)] +[ls mua mới * số ngày nắm giữ trong kỳ] +[ls gia hạn kỳ 1 * số ngày nắm giữ trong kỳ 1] + ... +[ls gia hạn kỳ n * số ngày nắm giữ kỳ n])/ Tổng thời gian nắm giữ
+
+#AFS Công thức tính:https://www.figma.com/file/bc5Z6OwCxGOGnVbCRpXFw1/Create-Bond-%2B-Inventory?node-id=0%3A1
+    AFS=dự kiến phát hành + (X_trading) +(X_PH) +Kho TPS

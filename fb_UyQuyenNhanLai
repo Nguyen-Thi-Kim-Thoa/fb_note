@@ -1,0 +1,30 @@
+[Mua trước ngày chốt danh sách trái chủ > mới được nhận lãi kỳ đó.]
+Mua sau ngày chốt sẽ đưa về kỳ sau > 
+
+
+
+Ngày kết thúc > ngày chốt của kỳ đó. > nhận lãi kỳ cuối
+
+#Policy 
+Uỷ quyền nhận lãi kỳ đầu > Ẩn cái dòng lãi kỳ đầu 
+Uỷ quyền nhận lãi kỳ cuối > Ẩn dòng lãi kỳ cuối
+--------------------------------------------
+#xác định kỳ cuối.
+Lúc bán về sau ngày chốt > Kỳ cuối
+Lúc bán về tại or trước  > Không phải kỳ cuối
+(đúng là kỳ cuối thì sẽ ẩn, không phải thì hiện)
+ 
+ #doc
+ https://finbasevn.atlassian.net/wiki/spaces/FB/pages/130516628/Config+Policy
+
+
+#Xác định các kỳ 
+Mua sau ngày chốt > không được nhận lãi kỳ đó 
+Mua trước và tại ngày chốt > Được nhận lãi kỳ đó.
+
+
+Bán trước và tại ngày chốt > Không phải kỳ cuối 
+Bán sau ngày chốt > Kỳ cuối. 
+
+#Lưu ý:
+- Chỉ có 1 kỳ > Kỳ đầu 

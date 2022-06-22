@@ -1,0 +1,70 @@
+#My Accounts:
+- MSTeam - @finbase.vn: thoa.nguyen@finbase.vn/fb@Kt123698
+- JIRA: https://finbasevn.atlassian.net/jira/software/c/projects/FB/boards/30
+- Confluence: https://finbasevn.atlassian.net/
+- Gitlab: https://git.finbase.vn/thoa.nguyen/Kimthoa123698
+
+
+#Software Development Life Cycle:
+- Agile & Scrum
+- https://www.atlassian.com/agile/scrum/sprints (overview section)
+
+#Business Finbase:
+- Bond (Trái phiếu)
+
+#Glossary:
+https://finbasevn.atlassian.net/wiki/spaces/FB/pages/130516737/Wording+and+Terminology
+
+
+#Danh sách account:
+-UAT:thoa.nguyen+op@finbase.vn/finbase.vn 
+     thoa.nguyen@finbase.vn/finbase.vn
+-Dev:thoa.nguyen+opdev@finbase.vn
+
+#Grafana (Kiếm tra version)
+-DEV-UAT: https://grafana.dev.finbase.vn
+-STG:https://grafana.stg.finbase.vn
+
+
+#tác vụ chạy tự động ( tự động update status, tự động gửi mail, )
+
+Status : Complete wait transferOrder Processing Service
+
+Email: Notify order status Notification Service
+
+Phát hành thành công : Update issuance status
+
+Update allow action: bán qua finmarket ( tự động 10-15 ngày)
+
+
+
+-LINK đổi thời gian
+https://www.freeformatter.com/cron-expression-generator-quartz.html
+
+-UAT:
+https://backoffice.uat.finbase.vn/
+chauldm@tpbs.com.vn/finbase.vn
+
+-STG:
+https://fb.backoffice.stg.finbase.vn/settings/job-triggers
+chauldm@tpbs.com.vn/B&K^kfV4K%5L6D
+
+-DEV:
+https://backoffice.dev.finbase.vn/settings/job-triggers
+chauldm@tpbs.com.vn/finbase.vn
+
+#Link học 
+https://docs.google.com/spreadsheets/d/1ng5fpHRNYLm-lNvnQ4HNw3Y3pIT7fyaOwFUDyCo2Wok/edit#gid=0
+
+#Back office user
+- BO - Company Admin: thoa.nguyen@finbase.vn
+- BO - Operator: thoa.nguyen+op@finbase.vn
+- BO- Operator (stg): thoa.nguyen+stg@finbase.vn
+
+
+
+
+#database:
+  dbHost: postgres.dev.finbase.vn/finbase_uat
+  dbUser: postgres
+  dbPass: f1nB@se.vn

@@ -1,0 +1,247 @@
+Luồng mua bán(16/3)
+
+
+AFS: Trái phiếu còn lại ( kiếm tra ở màn hình đặt lệnh )
+
+Thứ cấp: Sau ngày chốt danh sách trái chủ
+
+
+- [x] Đi các test case 
+- [x] Bán bond => cần xem lại
+
+
+Số lượng trái phiếu khả dụng( AFS ) = Dự kiến phát hành + kho TPS + Đã phát hành + customer đặt.
+
+Số lượng nắm giữ và số lượng khả dụng
+
+- [ ] Inventory(sổ lưu ký) (test case ->release )
+
+#BO buy 
+
+Nháp => Chờ ký => Chờ thanh toán=> Chờ chuyển nhượng  => Hoàn tất.
+
+- Đặt lệnh: 
+
+
+
+Nháp:
+- Pricing tính đúng:
+        - [ ] Số tiền đầu tư
+        - [ ] mệnh giá ( đơn giá)
+        - [ ] lãi từng kỳ
+        - [ ] Tất toán
+        - [ ] tổng tiền nhận được
+- Số lượng nắm giữ: Giảm 
+
+Chờ ký: 
+	
+
+Chờ thanh toán (đã ký)
+- Kiểm tra Quản lý thanh toán: 
+- Mail: Đã ký
+Chờ chuyển nhượng (đã thanh toán thành công)
+- Tại Quản lý thanh toán: status: đã thanh toán
+- Nhận mail đã thanh toán.
+- Kiểm tra ngày ký hợp đồng, ngày thanh toán và ngày chuyển nhượng đã đúng hay chưa
+(kiểm tra ngày phát hành trái phiếu tại thông tin trái phiếu)
+        - [ ] Ngày thanh toán phải trước or bằng ngày chuyển nhượng 
+        - [ ] Ngày chuyển nhượng không được nhỏ hơn ngày phát hành trái phiếu
+        - [ ] Ngày mua trước or cùng ngày ký hợp đồng
+- Chờ chuyển nhượng: 
+        - [ ] Tại Danh mục tài sản của khách hàng: chưa hiển thị record 
+        - [ ] Thông tin phân phối (Quản lý trái phiếu=> Thông tin chi tiết => Thông tin phân phối): Hiển thị trạng thái chờ đi tại record ( số lượng chờ đi = số lượng KH đặt)
+- Đã chuyển nhượng: 
+        - [ ] Mail: Đã chuyển nhượng.
+        - [ ] Tại Danh mục tài sản của KH: Hiển thị record có số lượng = số lượng KH mua.
+        - [ ] Thông tin phát hành: lịch sử phân phối=lịch sử điều phối kho
+        - [ ] Thông tin phân phối (Quản lý trái phiếu=> Thông tin chi tiết => Thông tin phân phối): Remove record chờ đi.(vì đã đi rồi)
+        - [ ] Tại Sổ lưu ký: Hiển thị Giấy chứng nhận( check thông tin lô, số lượng, hiệu lực) 
+        - [ ] Lịch sử chuyển nhượng (Quản lý trái phiếu=> Thông tin chi tiết => Lịch sử chuyển nhượng): Hiển thị record giao dịch của KH.
+        - [ ] Tại Bond  
+            - [ ] Giá trị Đang nắm giữ:  giảm (Kho TPS) (theo số lượng kh đặt)
+            - [ ] Dự kiến phát hành: không thay đổi.
+            - [ ] AFS (số lượng khả dụng ): giảm theo số lượng KH đặt.
+            - [ ] Đã phát hành( Phát hành thành công): Số lượng điều phối kho
+
+Khi mua Quá khứ:
+
+	Chú ý đến lô ngày bao nhiêu ( phải là lô quá khứ)
+	Kiểm tra lô so sánh lượng tp đã lấy ( ở lô nào, đã đúng chưa)
+
+Khi mua tương lai:
+	Tới trạng thái Chờ chuyển nhượng xong là dừng vì chưa chuyển nhượng được. (tới ngày tương lai mới có thể chuyển nhượng)
+	
+
+Khi mua tại ngày chốt danh sách trái chủ kỳ đầu tiên => Hưởng nguyên kỳ đầu
+
+Khi mua sau ngày chốt danh sách trái chủ => Không được hưởng nguyên kỳ đầu (tính theo ngày để hưởng lãi)
+
+Mua mix lô thì check xem thông tin lô đúng chưa, đúng ngày đúng lô, hiển thị record đúng lô.
+—————————————————————————————————————
+
+
+#BO sell
+Nháp => Chờ ký => Chờ chuyển nhượng => Chờ thanh toán => Hoàn tất.
+
+- Đặt lệnh: 
+
+
+Nháp:
+- Pricing tính đúng:
+        - [ ] Số tiền đầu tư
+        - [ ] mệnh giá ( đơn giá)
+        - [ ] lãi từng kỳ
+        - [ ] Tất toán
+        - [ ] tổng tiền nhận được
+- Số lượng nắm giữ: Tăng
+
+Chờ ký: 
+	
+
+Chờ chuyển nhượng (đã thanh toán thành công)
+
+- Nhận mail đã ký.
+- Kiểm tra ngày ký hợp đồng, ngày thanh toán và ngày chuyển nhượng đã đúng hay chưa
+(kiểm tra ngày phát hành trái phiếu tại thông tin trái phiếu)
+        - [ ] Ngày thanh toán phải sau or bằng ngày chuyển nhượng  ???????????
+        - [ ] Ngày chuyển nhượng không được nhỏ hơn ngày phát hành trái phiếu
+        - [ ] Ngày bán trước or cùng ngày ký hợp đồng ?????????
+- Chờ chuyển nhượng: 
+        - [ ] Tại Danh mục tài sản của khách hàng: chưa bị remove record
+        - [ ] Thông tin phân phối (Quản lý trái phiếu=> Thông tin chi tiết => Thông tin phân phối): Hiển thị trạng thái chờ về tại record ( số lượng chờ về = số lượng KH đặt)
+        - [ ] Tại Sổ lưu ký: Giấy chứng nhận mua còn hiệu lực, Giấy chứng nhận bán chưa hiển thị.
+- Đã chuyển nhượng: 
+        - [ ] Mail: Đã chuyển nhượng.
+        - [ ] Tại Danh mục tài sản của KH: Record bị remove ????????????
+        - [ ] Thông tin phát hành: lịch sử phân phối=lịch sử điều phối kho
+        - [ ] Thông tin phân phối (Quản lý trái phiếu=> Thông tin chi tiết => Thông tin phân phối): Remove record chờ về.
+        - [ ] Tại Sổ lưu ký: Hiển thị Giấy chứng nhận bán thứ cấp( check thông tin lô, số lượng, còn hiệu lực), Giấy chứng nhận lúc mua của KH bị hết hiệu lực ???????
+        - [ ] Lịch sử chuyển nhượng (Quản lý trái phiếu=> Thông tin chi tiết => Lịch sử chuyển nhượng): Hiển thị record giao dịch bán của KH. 
+        - [ ] Tại Bond  
+            - [ ] Giá trị Đang nắm giữ:  tăng (Kho TPS) (theo số lượng KH bán)
+            - [ ] Dự kiến phát hành: không thay đổi.
+            - [ ] AFS (số lượng khả dụng ): tăng theo số lượng KH bán.
+            - [ ] Đã phát hành( Phát hành thành công): Số lượng điều phối kho => giữ nguyên ????
+
+
+
+
+Bán tương lai: 
+	Mua tương lai>bán tương lai: (có thế chọn bán nhưng khi số lượng GD =0 > không chọn đặt lệnh được)
+
+
+Document order status
+
+
+######Luồng bán market:
+Bán: Đặt bán  (Nháp) -> chờ ký (Khách hàng ký) -> chờ chuyển nhượng -> Chờ chuyển tiền
+Check trạng thái: 
+TPS.THU.20220420.100446.1M_PAR.000014415
+
+
+
+Nháp => Chờ ký => Chờ chuyển nhượng => Chờ chuyển tiền => Hoàn tất.
+
+- Đặt lệnh: 
+		- Khách hàng đặt
+               	- Khách hàng đặt
+Nháp:
+- Pricing tính đúng:
+        - [ ] Số tiền đầu tư
+        - [ ] mệnh giá ( đơn giá)
+        - [ ] lãi từng kỳ
+        - [ ] Tất toán
+        - [ ] tổng tiền nhận được
+- Số lượng nắm giữ: Tăng
+
+Chờ ký: 
+	
+
+Chờ chuyển nhượng (đã thanh toán thành công)
+
+- Nhận mail đã ký.
+- Kiểm tra ngày ký hợp đồng, ngày thanh toán và ngày chuyển nhượng đã đúng hay chưa
+(kiểm tra ngày phát hành trái phiếu tại thông tin trái phiếu)
+        - [ ] Ngày thanh toán phải sau or bằng ngày chuyển nhượng  ???????????
+        - [ ] Ngày chuyển nhượng không được nhỏ hơn ngày phát hành trái phiếu
+        - [ ] Ngày bán trước or cùng ngày ký hợp đồng ?????????
+- Chờ chuyển nhượng: 
+        - [ ] Tại Danh mục tài sản của khách hàng: chưa bị remove record
+        - [ ] Thông tin phân phối (Quản lý trái phiếu=> Thông tin chi tiết => Thông tin phân phối): Hiển thị trạng thái chờ về tại record ( số lượng chờ về = số lượng KH đặt)
+        - [ ] Tại Sổ lưu ký: Giấy chứng nhận mua còn hiệu lực, Giấy chứng nhận bán chưa hiển thị.
+- Đã chuyển nhượng: 
+        - [ ] Mail: Đã chuyển nhượng.
+        - [ ] Tại Danh mục tài sản của KH: Record bị remove ????????????
+        - [ ] Thông tin phát hành: lịch sử phân phối=lịch sử điều phối kho
+        - [ ] Thông tin phân phối (Quản lý trái phiếu=> Thông tin chi tiết => Thông tin phân phối): Remove record chờ về.
+        - [ ] Tại Sổ lưu ký: Hiển thị Giấy chứng nhận bán thứ cấp( check thông tin lô, số lượng, còn hiệu lực), Giấy chứng nhận lúc mua của KH bị hết hiệu lực ???????
+        - [ ] Lịch sử chuyển nhượng (Quản lý trái phiếu=> Thông tin chi tiết => Lịch sử chuyển nhượng): Hiển thị record giao dịch bán của KH. 
+        - [ ] Tại Bond  
+            - [ ] Giá trị Đang nắm giữ:  tăng (Kho TPS) (theo số lượng KH bán)
+            - [ ] Dự kiến phát hành: không thay đổi.
+            - [ ] AFS (số lượng khả dụng ): tăng theo số lượng KH bán.
+            - [ ] Đã phát hành( Phát hành thành công): Số lượng điều phối kho => giữ nguyên ????
+
+
+####Điều phối kho:
+Nhập kho: 
+- Từ tcph => kho tps
+        - [x] Update số lượng kho ( số lượng hiện tại) , số lưu ký kho
+        - [x] số lượng phát hành tại thông tin trái phiếu tăng lên
+        - [x] Thêm record trong Lịch sử phát hành( chỉ lưu khi nhập từ tcph => kho, phát hành sơ cấp)
+- Từ tcph => khách hàng:(cũ + mới)
+        - [x] chuyển nhượng cho khách hàng
+        - [x] Check sổ lưu ký, lịch sử chuyển nhượng ( thêm recorrd bán sơ cấp)
+        - [x] Check danh mục tài sản khách hàng 
+        - [x] số lượng phát hành tăng lên tại Thông tin trái phiếu
+- Từ kho => KH:(chuyển nhượng cho KH)
+        - [x] Nếu chuyển nhượng hết số lượng tp: Record trong số lưu ký của trái phiếu hết hạn 
+        - [x] Tại Danh mục tài sản của khách hàng tạo mới = số lượng chuyển nhượng
+        - [x] Tạo record mới từ kho => KH 
+        - [x] Nếu chuyển nhượng số lượng < số lượng hiện có: Record update số lượng nắm giữ ( số lượng năm giữ ban đầu - số lượng vừa chuyển nhượng cho KH) 
+- Từ KH => kho: ( bán lại cho kho)
+        - [x] Tại thông tin phân phối: số lượng nắm giữ tăng lên( thứ cấp)
+        - [x] Tại Lịch sử chuyển nhượng tạo mới với Loại giao dịch = Khách hàng bán lại
+        - [x] Tạo mới giấy cho kho TPS
+        - [x] tại sổ lưu ký trái phiếu: giấy (theo Số giấy chứng nhận đã chọn chuyển nhượng) bị hết hiệu lực (do chuyển nhượng hết số lượng)
+        - [x] Tại Danh mục tài sản KH: remove mã hợp đồng đã chuyển nhượng
+- Từ KH A => KH B:
+        - [x] Tại Danh mục tài sản KH A: mất tài sản đã bán
+            - [x] Tại Danh mục tài sản KH B: có record được tạo mới
+        - [x] Giấy của KH A: số lượng năm giữ bị giảm theo số lượng đã chuyển nhượng
+        - [x] Tạo giấy cho KH B : check thông tin mã họp đồng, số lô, số lượng chuyển nhượng 
+        - [x] Tại Lịch sử giao dịch: Tạo mới record với loại giao dịch là bán thứ cấp.
+
+
+tại dev: không chuyển từ tổ chức phát hành được, nên kh chưa có giấy để hiển thị.
+Tại UAT thì chưa fix.
+
+        - Tcph-> kh Newđể có tài sản và giấy
+        - Chuyển từ kh new -> kh 
+            - [ ] Kiểm trả tài sản.
+            - [ ] sổ lưu ký: giấy chứng nhận nào còn hiệu lực.
+            - [ ] Hiện thi tại chuyển nhượng những giấy nào.
+            - [ ] 
+
+
+-trường hợp trong kho không còn hàng theo lô nào nữa(mới lên bond hoặc mua hết kho, chưa điều phối): Số lượng khả dụng = đúng AFS của ngày mong muốn
+
+-số lượng trong lô có thể phát hành thêm = ISSUER - (INTRADING - (DISTRIBUTOR + HOLDING) > 0? INTRADING - (DISTRIBUTOR + HOLDING):0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

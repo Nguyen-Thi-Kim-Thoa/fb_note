@@ -1,0 +1,201 @@
+#Quản lý Danh sách trái phiếu:
+https://finbasevn.atlassian.net/wiki/spaces/FB/pages/140870284/Qu+n+l+Danh+s+ch+tr+i+phi+u
+
+
+#lên bond 
+Lên sp khung > chính sách > import 
+
+#Thứ cấp: coupon đầu tiên
+
+
+
+#Ngày chốt danh sách trái chủ: 
+    Đúng ngày hoặc trước ngày chốt > sẽ được nhận lãi kỳ đầu 
+    Đặt sau ngày chốt > không được hưởng lãi kỳ đầu
+
+    Coupondate: xem trong attribute
+    ${CouponInterestClosing}:x ngày 
+    Không tính chủ nhật và ngày lễ.
+
+
+    Ngày chốt danh sách trái chủ = Coupondate - x ( không tính ngày lễ và cuối tuần)
+    [Tại ngày chốt dstc: -> có thế PH thêm
+     Sau chốt dstc: -> Không thể PH thêm
+    
+
+#AFS Công thức tính:
+     
+    AFS=dự kiến phát hành + (X_trading) +(X_PH) +Kho TPS
+
+#Dòng lãi coupon chốt danhh sách trái chủ:
+Mua tại ngày chốt or trước > có dòng lãi coupon
+Bán tại or trước thì không hiện dòng lãi coupon 
+
+
+#Nguyên tắc FIFO:
+FIFO theo quy tắc:
+P1: SL tồn trong kho phân phối
+P2: SL sơ cấp có thể phát hành thêm 
+P3: SL KH bán lại, đang chờ về kho phân phối
+
+
+
+
+
+#Note: Mỗi trái phiếu mua thời hạn khác nhau sẽ có lãi suất khác nhau, đơn giá khác nhau.(Product)
+
+Information Bond:
+	Ngày 
+
+Đặt lệnh: 
+Quyền đặt lệnh,
+ROP
+
+
+
+
+Customer
+- Nguyễn Thị A - 0327588789- 241736052
+ Thêm Agent cho Customer: 
+- Nhóm kinh doanh => thêm Khách Hàng.
+
+Agent
+- Nguyễn Thị B - 0327588780- 241036051
+ - Cách tạo Agent: 
+		- Thêm khách hàng
+		- Tạo nhóm kinh doanh => chọn nhóm kinh doanh => Xem chi tiết nhóm => Thêm Agent => Tìm khách hàng => Thêm Agent 
+
+
+
+Các cách để mua trái phiếu
+- KH từ mua 
+- BO đặt lệnh dùm
+- Agent đặt lệnh dùm
+
+
+
+
+Cách mua bán trái phiếu:	
+
+1. User tự mua (Market)
+- User có acc (Đk : user đã input profile, là nhà đầu tư chuyên nghiệp)
+- login vào link : https://stg.finbase.vn/products
+- Chọn 1 Trái phiếu bất kì (ví dụ : GKC.2021.02 )
+- Chọn phương án đầu tư, nhập số tiền và chọn "Đặt mua ngày"
+- Kiểm tra thông tin và chọn "Tiến hành đặt mua"
+- Ở màn hình Ký HĐ, chọn "Ký xác nhận"
+- Chọn xác nhận, nhập OTP ( trên stg sẽ gửi về sdt user, trên uat sẽ gửi về email)
+- Nhập xong otp chọn Xác nhận
+2. BO đặt lệnh dùm
+- Chọn Đặt lệnh
+- Input cmnd/cccd , bond code
+- Chọn policy mong muốn
+- Input số tiền đầu tư
+- Input ngày ký hợp đồng, ngày thanh toán, ngày chuyển nhượng
+- Check princing
+- Chọn Gửi lệnh
+- Vào acc checker duyệt lệnh
+- Vài Giao dịch update status
+3. Agent đặt lệnh cho Customer:
+- Agent login chọn 1 sp:
++ Chọn Customer
++ Điền tổng tiền đầu tư
++ Ngày đặt các kiểu
+- Agent tiến hành đặt lệnh
+- Đặt xong có thể xem thông tin hợp đồng và sổ lệnh KH
+- Lúc này KH sẽ vào tab Giới thiệu để xác nhận
+- Xác nhận thành công > qa Giao dịch
+- Tiến hành Ký xác nhận, chuyển tiền các kiểu
+- Vào BO duyệt thanh toán nếu đã nhận được tiền từ KH
+4. Bán TP:
+- Khi mua 1 sp có kì hạn, vd: 3th hay 6th
+- Tương đương sẽ được TPS cam kết sẽ mua lại sau khoảng time đó
+- KH có quyền gia hạn hoặc bán lại tuỳ ý
+- Khi đến ngày cam kết thì trước ngày này từ 15~10 ngày KH sẽ có 5 ngày để bán hay gia hạn.
+- VD mua 3th thì tới ngày thứ 75~80 KH sẽ bán được TP nếu có nhu cầu.
+- Status: Nháp> Chờ ký> Chờ chuyển nhượng> Chờ chuyển tiền> Hoàn tất.
+
+
+
+
+Làm Theo test case
+
+
+Cách nhập kho: 
+Taị BackOffice 
+Chọn Quản lý trái phiếu=> Quản lý tổ chức điều phối kho => Chuyển nhượng => Nhập thông tin.
+
+Imfomation Bond: 
+
+
+
+Cách lên Bond:
+1. tạo thông tin bond
+2. Thêm chính sách theo file import
+3. Chỉnh sửa 2 file import (ngày phát hành, mã bond)
+4. Import attribute
+
+
+Test pricing: 
+Test so sánh với file excel: lấy file excel làm chuẩn:
+- Lên Bond Theo thông tin file excel: chú ý chính sách về lãi, thời gian
+- Kiểm tra lãi định kỳ, đơn giá, tất toán, tổng tiền.
+
+
+
+Test policy:
+ngày kết thúc: 19/4, sang 20/4 sẽ hết hiệu lực
+
+
+Note: kh -> kho (19/4)
+
+{"status":2,"messageCode":"0000000","messageError":"No message found under code '' for locale 'null'."}
+
+Bán không có trong tab Giao dịch
+
+
+
+Test luồng Policy:
+
+- Tạo mới policy: -> đặt mua -> kiếm tra các sp (sp thuộc chính sách đó ) của chính sách có áp dụng được không (tên, lãi)
+- Huỷ áp dụng -> đặt lệnh để kiểm tra còn sp đó hay không
+- Tạo policy mới -> đặt lệnh kiểm tra xem thông tin sp trong chính sách có thay đổi không
+
+
+
+
+
+
+
+
+
+Câu Query cơ bản để check 1 bond có được tạo thành công hay không: 
+select * from information.bond_original_info
+
+where id = (
+
+    select id from bond.bond_original_info
+
+    where code = 'THOA.20220418.111054'
+
+);
+Expected: Query trả về 1 row. Nếu không trả row nào tức là Bond bị lỗi từ bước tạo.
+
+
+
+
+
+Đã PH: số lượng nắm giữu
+
+
+
+
+
+
+
+
+
+
+
+
+

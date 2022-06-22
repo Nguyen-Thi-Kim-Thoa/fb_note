@@ -1,0 +1,33 @@
+#Cách log bug
++ Vô Jira software
++ Tìm board của mình
++ Chọn Create
++ Chọn Issue type: bug
++ Summary: Điền keyword thông tin về bug (môi trường, chức năng bị bug, lỗi là gì)
++ Description: Steps (các bước tái hiện bug), Expectation (kết quả mong muốn), Actual (kết quả thực tế), Hình ảnh/clip minh họa
++ Assignee: Team lead
++ Priority: Tùy vào độ ưu tiên (như feature sắp release, mức độ ảnh hưởng, hoặc PO mong muốn)
++ Severity: 
+    - Blocker (block các chức năng chính), 
+    - Critical (bug xảy ra ở các chức năng chính như mua, bán, rút tiền, pricing,..), 
+    - Major (bug không quan trọng nhưng gây khó chịu cho người dùng), 
+    - Minor (bug không quan trọng và người dùng không thấy được)
++ Fix versions: Nếu bug xảy ra trong feature sắp release thì chọn version, không thì không cần chọn
++ Epic Link: Nếu bug xảy ra trong feature đang làm thì để link vào
++ Sprint: sprint đang làm việc (active)
++ Label: Business, team đang làm
++ Environment: môi trường xảy ra bug
++ Create
+    - Làm sao biết bug của team nào: hỏi PO
+    - Báo bug lên channel của team đối với phẩm của team và lên channel general nếu bug ảnh hưởng tất cả sản phẩm
+    - Khi nào nên log bug: chạy regression trên UAT, bug trên dev của feature mới đã báo nhưng không ai fix
+    - Tại sao phải log bug: để mọi người trong team theo dõi tiến độ, đế lưu lại dễ trade sau này, report
+    - Software development life circle:
+        + Trong lúc implement code thì đọc documents, AC, viết test case, test plan, chuẩn bị test data, hỏi PO về mục tiêu của feature
+        + Nhờ người có kinh nghiệm review và người cùng team review
+        + Các thành viên QA cùng team cùng PO review lại checklist xem có đúng mục đích của sản phẩm
+        + Execute checklist và log bug nếu có, không có bug thì report
+        + Sau khi release sẽ có 1 buổi retro để xem lại những cái làm được, không làm được, khó khăn, cách khắc phục
+
+
+

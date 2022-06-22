@@ -1,0 +1,68 @@
+#data:
+t10-15: chỉ gửi mail thông báo gia hạn 
+Job sẽ chạy auto extend tại cuối ngày đặt lệnh gia hạn nếu đã hết thời hạn
+
+
+#Đặt lệnh gia hạn tại t10-t15
+
+đối với KH or Agent gia hạn tại FM
+
+
+#gia hạn checklist
+gia hạn tại màn hình đặt lệnh 
+gia hạn tại tài sản
+
+
+    Tự dộng gia hạn khi đến đúng ngày: 
+    
+    Checker huỷ lệnh gia hạn > gia hạn lạibb....   fail
+
+    chọn HTM> gia hạn HTM
+    chọn HTM> gia hạn khác HTM
+    
+    
+    
+    nhận mail tại 2 ngày t10-t15
+        T10: TPS.THOA.20220509.092219.1M_PAR.000015997
+        T15:TPS.THOA.20220509.092219.1M_PAR.000016000
+
+    ----Không tự động gia hạn đối với gia hạn chưa có chính sáchh giống: đặt lệnh gia hạn> xoá chính sách
+
+gia hạn lầnn đầu > <mã hợp đồng>.001 > hoàn tất
+gia hạn lầnn 2 >
+
+
+    gia hạn hoàn tất > bán: tạo data để hôm nay là ngày gia hạn > gia hạn > hoàn tất > bán > except: thành công.
+
+##job tự động cancel:
+    Qua ngày 
+    20h cùng ngày
+
+    * Order mua nháp chờ duyệt nhưng ko được duyệt trong ngày
+    TPS.THOA.20220509.092219.HTM_PAR.000015916
+    * Order mua chờ xác nhận nhưng KH ko xác nhận trong ngày
+
+    * Order mua qua ngày thanh toán nhưng vẫn chưa thanh toán (bao gồm trạng thái chờ ký, chờ thanh toán)
+    * Order bán chờ duyệt nhưng ko được duyệt tính tới 20h ngày bán
+    * Order bán chờ xác nhận nhưng KH ko xác nhận tính tới 20h ngày bán
+    * Order bán chờ ký nhưng ko được xác nhận ký tính tới 20h ngày bán
+    * Order gia hạn chờ duyệt nhưng ko được duyệt tính tới 20h ngày bán
+
+#kiểm tra lãi suất.
+
+https://finbasevn.sharepoint.com/:x:/r/sites/ProductDevelopment/_layouts/15/Doc.aspx?sourcedoc=%7B09BD441F-6031-4376-9B86-C6BE81D5B864%7D&file=TODOS.xlsx&action=default&mobileredirect=true
+
+#gốc = sltp * mệnh giá
+
+
+###Auto gia hạn khi tới kỳ: Không đặt lệnh gia hạn > tới kỳ gia hạn > tự động gia hạn ( điều kiên = chaỵ job )
+
+đặt mua 1 hợp đồng tới kỳ gia hạn > bật job > kiểm tra
+- Gói gia hạn ( có hiệu lực hay không)
+- Cái kỳ đúng không 
+
+
+
+
+
+
