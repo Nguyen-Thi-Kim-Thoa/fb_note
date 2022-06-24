@@ -4,7 +4,7 @@ Tcph sẽ trả về cho kh:
 
 
 [Callable]: tcph thu hồi sớm(mua lại trước hạn)
-	toàn phần: gốc lãi tính đến nhà thu hồi
+	toàn phần: gốc lãi tính đến ngày  thu hồi
 	1 phần
 [putable]: trái chủ có thể bán sớm về tcph
 
@@ -12,4 +12,64 @@ Tcph sẽ trả về cho kh:
 
  ??????????
  Đáo hạn như thế nào ? 
- 
+
+
+
+ ----
+ Các thay đổi: 
+
+
+ ----------------
+ #Thay đổi này chốt dstc: Chỉ được chỉnh sửa ngày chốt với những kỳ chưa chốt 
+ 1. ngày chốt mới >= ngày hiện tại
+ 2. ngày chốt mới < Ngày trả lãi
+Việc thay đổi ngày chốt > việc tính toán gốc/ lãi theo ngày chốt sẽ thay đổi theo ngày chốt 
+
+#đáo hạn sớm 
+- Thời gian được đáo hạn:
+ + Chỉ được chọn ngày từ Today => Ngày đáo hạn ban đầu.
+ + Trường hợp không được: Ngày qúa khứ, ngày > ngày đáo hạn ban đầu
+- Sau khi thay đổi ngày đáo hạn 
+ + Ngày cuối kỳ = Ngày đáo hạn
+ + Ngày chốt dsct thay đổi theo công thức: 
+ 	Ngày chốt DSTC = Ngày cuối kỳ - ${CouponInterestClosing} (tính theo working day)
+ + Lãi kỳ cuối : Tính từ Ngày bắt đầu -> Ngày đáo hạn mới
+ + Thông tin Trái phiếu: cập nhật lại info ngày đáo hạn theo ngày đã thay đổi
+ + Hệ thống ghi nhận ngày đáo hạn mới và update ở các tác vụ liên quan như gốc lãi trái phiếu, pricing…. 
+ + Giao dịch: [ Kiểm tra dòng lãi, Pricing tính đến ngày đáo hạn, Gốc lãi chỉ được tính đến ngày đáo hạn ] 
+	Giao dịch mua đã đặt sẽ chỉ được tính lãi max đến ngày đáo hạn đã cập nhật, thay vì theo thông tin ban đầu 
+	Giao dịch mua mới sẽ được ghi nhận theo thông tin ngày đáo hạn mới
+	Giao dịch gia hạn tự động chỉ được gia hạn đến ngày đáo hạn TP
+??????/ Dòng tiền tại Giao dịch có thay đổi không.
+
+#Trái phiếu: Trạng thái Đã đáo hạn
+- Ngày thực hiện action cập nhật phải bằng hoặc sau ngày đáo hạn đang được ghi nhận theo thông tin TP
+- Có pop-up confirm
+- Sau khi cập nhật => TP xem như đã đáo hạn => Kiểm tra các tác vụ liên quan (portfolio, sổ lưu ký…):
+
+Update Portfolio:
+	Trừ giá trị giao dịch của TP đã đáo hạn trong portfolio tổng
+	Đánh dấu TP đã đáo hạn cho record liên quan trong portfolio (hiển thị marking đáo hạn trong vòng 1 tháng kể từ ngày đáo hạn)
+
+Thay đổi trạng thái TP:
+	Provide khả năng cho user chủ động chuyển trạng thái TP thành Đáo hạn trong Quản lý TP
+	Update các thông tin liên quan trong Quản lý TP 
+
+Update SLK:
+	Trigger đáo hạn/mua lại sớm → snapshot DSTC kỳ cuối.
+	Marking TP đã đáo hạn
+	Revoke các record GCN hiệu lực
+	Xử lý filter trong Phong toả, Giải toả 
+
+Front-end:
+	Ẩn các action liên quan đến TP đã đáo hạn (ẩn trên market, ko auto gia hạn, ko đặt bán, chuyển nhượng tay…)
+
+Xử lý kho:
+	Chuyển nhượng asset từ account KH về kho Issuer
+	Xử lý kho Issuer và X-Issuer
+
+Case: Sau ngày chốt kỳ cuối:
+	Không auto gia hạn cho kỳ mới.
+	Không cho Kh đặt sau ngày chốt của kỳ cuối và khi tp đã đáo hạn: Portfoli ( FM và BO ) và Màn hình Đặt lệnh ở BO
+	Quản lý trái phiếu: Không tìm thấy trái phiếu đã đáo hạn 
+Case gia hạn: Chỉ gia hạn đến ngày đáo hạn( Cuối kỳ gia hạn: trước, đúng , sau ngày Đáo hạn )
