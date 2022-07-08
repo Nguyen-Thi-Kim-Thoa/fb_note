@@ -36,6 +36,17 @@ Phát hành thành công : Update issuance status
 
 Update allow action: bán qua finmarket ( tự động 10-15 ngày)
 
+Gia hạn sau khi đặt lệnh gia hạn( chờ gia hạn): Order extend scanning
+
+
+#order-extend-scanning: 
+gia hạn: quét lệnh gia hạn đặt sẵn, hoặc lệnh mua hoàn tất qua ngày bán mà chưa bán.
+
+#Expire Order Processing Flows: Cho mua bán gia hạn
+expire: rule theo page tổng hợp rule chung, các lệnh mua,bán, gia hạn, khi nào thì expire
+
+
+
 
 
 -LINK đổi thời gian

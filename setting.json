@@ -1,0 +1,14 @@
+"powermode.explosions.backgroundMode":"image",
+     "powermode.enabled": true, 
+     "powermode.shake.enabled": false, 
+    "powermode.explosions.customExplosions": [
+       "https://media.giphy.com/media/see1sKEEvFNOzWDmee/giphy.gif"
+    ],
+    "powermode.explosions.duration": 1200,
+    "powermode.explosions.size": 12.5,
+    "[scss]": {
+        "editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
+    },
+    "window.zoomLevel": -1,
+    "powermode.explosions.customCss":{"position":"absolute", "top":"0%", "transform" : "translateY(-60%)"}
+    powermode.enabled: true
